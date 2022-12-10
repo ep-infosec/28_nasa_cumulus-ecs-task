@@ -1,0 +1,54 @@
+{
+  "name": "@cumulus/cumulus-ecs-task",
+  "version": "1.8.0",
+  "description": "Run lambda functions in ECS",
+  "main": "index.js",
+  "bin": {
+    "cumulus-ecs-task": "index.js"
+  },
+  "engines": {
+    "node": ">=14.19.1"
+  },
+  "keywords": [
+    "CUMULUS",
+    "GIBS",
+    "NASA"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cumulus-nasa/cumulus-ecs-task.git"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "aws-sdk": "^2.814.0",
+    "cliclopts": "^1.1.1",
+    "lodash": "^4.17.20",
+    "minimist": "^1.2.5",
+    "p-retry": "^2.0.0",
+    "respawn": "^2.5.0",
+    "rimraf": "^2.6.2"
+  },
+  "scripts": {
+    "test": "ava tests/test.js",
+    "start": "./bin/service.js",
+    "lint": "eslint . --ext js",
+    "build": "docker build -t cumuluss/cumulus-ecs-task .",
+    "release": "./bin/release.sh",
+    "docker:clean": "docker rm -v $(docker ps -a -q -f status=exited); docker rmi $(docker images -f \"dangling=true\" -q); true"
+  },
+  "devDependencies": {
+    "archiver": "^5.0.0",
+    "ava": "^3.12.1",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsdoc": "^22.1.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-react": "^7.19.0",
+    "fs-extra": "^7.0.0",
+    "jsonfilter": "^1.1.2",
+    "nock": "^9.6.1",
+    "sinon": "^6.1.5"
+  }
+}
